@@ -173,11 +173,17 @@ img { max-width: 100%; display: block; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: var(--gradient-hero);
-    background-size: 200% 200%;
-    animation: gradientMove 8s ease infinite;
+    background: url('images/hero-bg.png') center center / cover no-repeat;
     overflow: hidden;
     padding: 120px 20px 140px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
+    z-index: 1;
 }
 
 @keyframes gradientMove {
@@ -187,12 +193,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-bg {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
+    display: none;
 }
 
 .hero-content {
@@ -203,8 +204,9 @@ img { max-width: 100%; display: block; }
 
 .hero-badge {
     display: inline-block;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
     color: white;
     font-size: 13px;
     font-weight: 500;
@@ -423,8 +425,15 @@ img { max-width: 100%; display: block; }
 }
 
 .about-message {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.about-photo {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
 }
 
 /* ========== Image Placeholder ========== */
@@ -823,9 +832,6 @@ img { max-width: 100%; display: block; }
 /* ========== Entry ========== */
 .entry {
     position: relative;
-    background: var(--gradient-hero);
-    background-size: 200% 200%;
-    animation: gradientMove 8s ease infinite;
     text-align: center;
     padding: 100px 0;
     overflow: hidden;
@@ -834,9 +840,14 @@ img { max-width: 100%; display: block; }
 .entry-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background:
-        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.12) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    background: url('images/cta-bg.png') center center / cover no-repeat;
+}
+
+.entry-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 100%);
 }
 
 .entry-inner {
@@ -862,14 +873,14 @@ img { max-width: 100%; display: block; }
 }
 
 .entry .btn-primary {
-    background: white;
-    color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    background: var(--gradient-btn);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255,107,107,0.4);
 }
 
 .entry .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 32px rgba(255,107,107,0.5);
 }
 
 .entry-note {
@@ -892,9 +903,10 @@ img { max-width: 100%; display: block; }
 }
 
 .entry .btn-instagram {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(8px);
-    border: 2px solid rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
 }
 
 /* ========== Footer ========== */
