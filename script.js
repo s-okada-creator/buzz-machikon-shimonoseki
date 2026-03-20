@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Scroll fade-in ---
     const fadeElements = document.querySelectorAll(
         '.section-header, .about-card, .about-message, .event-card, ' +
-        '.flow-step, .insta-embed-item, .voice-card, .faq-item, .entry-inner'
+        '.flow-step, .insta-embed-item, .voice-card, .faq-item, .entry-inner, ' +
+        '.contact-inner, .mid-cta-inner'
     );
 
     fadeElements.forEach(el => el.classList.add('fade-in'));
@@ -52,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // stagger animation
                 setTimeout(() => {
                     entry.target.classList.add('visible');
                 }, index * 60);
@@ -78,5 +78,52 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Fixed CTA (mobile) ---
+    const fixedCta = document.getElementById('fixedCta');
+    if (fixedCta) {
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            // Show after scrolling past the hero
+            if (scrollY > window.innerHeight * 0.6) {
+                fixedCta.classList.add('visible');
+                document.body.classList.add('has-fixed-cta');
+            } else {
+                fixedCta.classList.remove('visible');
+                document.body.classList.remove('has-fixed-cta');
+            }
+            lastScrollY = scrollY;
+        });
+    }
+
+    // --- Contact form ---
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = contactForm.querySelector('#contact-name').value.trim();
+            const email = contactForm.querySelector('#contact-email').value.trim();
+            const message = contactForm.querySelector('#contact-message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('すべての項目を入力してください。');
+                return;
+            }
+
+            // mailto fallback - opens user's email client
+            const subject = encodeURIComponent('【BUZZ】お問い合わせ');
+            const body = encodeURIComponent(
+                'お名前: ' + name + '\n' +
+                'メールアドレス: ' + email + '\n\n' +
+                '【お問い合わせ内容】\n' + message
+            );
+            window.location.href = 'mailto:buzz_com2025@example.com?subject=' + subject + '&body=' + body;
+
+            alert('メールアプリが開きます。送信をお願いいたします。');
+        });
+    }
 
 });
