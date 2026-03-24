@@ -143,6 +143,10 @@ img { max-width: 100%; display: block; }
     box-shadow: var(--shadow-color);
 }
 
+.nav-overlay {
+    display: none;
+}
+
 .nav-toggle {
     display: none;
     background: none;
@@ -980,12 +984,14 @@ img { max-width: 100%; display: block; }
     .nav-toggle { display: flex; }
 
     .nav-menu {
+        display: flex;
         position: fixed;
         top: 0;
         right: -100%;
         width: 80%;
         max-width: 320px;
         height: 100vh;
+        height: 100dvh;
         background: white;
         flex-direction: column;
         align-items: flex-start;
@@ -996,11 +1002,11 @@ img { max-width: 100%; display: block; }
         box-shadow: -4px 0 24px rgba(0,0,0,0.1);
         transition: right 0.35s ease;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-menu.active {
         right: 0;
-        display: flex;
     }
 
     .nav-menu li {

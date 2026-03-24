@@ -1,5 +1,5 @@
 // ============================================
-// BUZZ - Script
+// Buzz com - Script
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,13 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Navbar scroll ---
     const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 60) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // --- Mobile menu ---
     const navToggle = document.getElementById('navToggle');
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navOverlay = document.getElementById('navOverlay');
 
     function openMenu() {
+        if (!navMenu || !navToggle) return;
         navMenu.classList.add('active');
         navToggle.classList.add('active');
         if (navOverlay) navOverlay.classList.add('active');
@@ -28,27 +31,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeMenu() {
+        if (!navMenu || !navToggle) return;
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
         if (navOverlay) navOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    navToggle.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
+    if (navToggle) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
 
     if (navOverlay) {
         navOverlay.addEventListener('click', closeMenu);
     }
 
-    navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
+    // Menu link handling
+    if (navMenu) {
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+
+                // External link (e.g. events.html, google forms)
+                if (href && !href.startsWith('#')) {
+                    closeMenu();
+                    // Let the browser navigate naturally - don't prevent default
+                    return;
+                }
+
+                // Internal anchor link (e.g. #about)
+                if (href && href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    closeMenu();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        setTimeout(() => {
+                            const offset = 70;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }, 350); // Wait for menu close animation
+                    }
+                    return;
+                }
+
+                // href="#" (logo etc) - just close menu, go to top
+                if (href === '#') {
+                    e.preventDefault();
+                    closeMenu();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+    }
 
     // --- FAQ accordion ---
     document.querySelectorAll('.faq-question').forEach(btn => {
@@ -63,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Scroll fade-in ---
     const fadeElements = document.querySelectorAll(
         '.section-header, .about-card, .about-message, .event-card, ' +
-        '.flow-step, .insta-embed-item, .voice-card, .faq-item, .entry-inner, ' +
+        '.flow-step-3, .insta-embed-item, .faq-item, .entry-inner, ' +
         '.contact-inner, .mid-cta-inner'
     );
 
@@ -85,11 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // --- Smooth scroll ---
+    // --- Smooth scroll (non-menu links only) ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Skip nav menu links - they're handled above
+        if (anchor.closest('.nav-menu')) return;
+
         anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+
+            // Skip bare "#" links
+            if (!href || href === '#') return;
+
             e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 const offset = 70;
                 const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -101,11 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Fixed CTA (mobile) ---
     const fixedCta = document.getElementById('fixedCta');
     if (fixedCta) {
-        let lastScrollY = 0;
-
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
-            // Show after scrolling past the hero
             if (scrollY > window.innerHeight * 0.6) {
                 fixedCta.classList.add('visible');
                 document.body.classList.add('has-fixed-cta');
@@ -113,35 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 fixedCta.classList.remove('visible');
                 document.body.classList.remove('has-fixed-cta');
             }
-            lastScrollY = scrollY;
-        });
-    }
-
-    // --- Contact form ---
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = contactForm.querySelector('#contact-name').value.trim();
-            const email = contactForm.querySelector('#contact-email').value.trim();
-            const message = contactForm.querySelector('#contact-message').value.trim();
-
-            if (!name || !email || !message) {
-                alert('すべての項目を入力してください。');
-                return;
-            }
-
-            // mailto fallback - opens user's email client
-            const subject = encodeURIComponent('【BUZZ】お問い合わせ');
-            const body = encodeURIComponent(
-                'お名前: ' + name + '\n' +
-                'メールアドレス: ' + email + '\n\n' +
-                '【お問い合わせ内容】\n' + message
-            );
-            window.location.href = 'mailto:buzz_com2025@example.com?subject=' + subject + '&body=' + body;
-
-            alert('メールアプリが開きます。送信をお願いいたします。');
         });
     }
 
