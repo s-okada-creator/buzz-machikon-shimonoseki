@@ -105,6 +105,16 @@ img { max-width: 100%; display: block; }
     align-items: center;
     gap: 28px;
     list-style: none;
+    position: fixed;
+    top: 0;
+    right: 20px;
+    z-index: 1001;
+    padding-top: 20px;
+    transition: var(--transition);
+}
+
+.navbar.scrolled ~ .nav-menu {
+    padding-top: 14px;
 }
 
 .nav-menu a {
@@ -1005,6 +1015,10 @@ img { max-width: 100%; display: block; }
         -webkit-overflow-scrolling: touch;
     }
 
+    .navbar.scrolled ~ .nav-menu {
+        padding-top: 80px;
+    }
+
     .nav-menu.active {
         right: 0;
     }
@@ -1043,7 +1057,7 @@ img { max-width: 100%; display: block; }
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         background: rgba(0,0,0,0.4);
-        z-index: 1000;
+        z-index: 999;
     }
 
     .nav-overlay.active {
