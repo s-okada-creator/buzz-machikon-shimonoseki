@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>イベント一覧 - Buzz com｜下関の街コン</title>
-    <meta name="description" content="Buzz com（バズコン）の直近イベント一覧。お花見、CAFE婚活、街コン、バスコンなど多彩なイベントを開催中！">
+    <meta name="description" content="Buzz com（バズコン）の直近イベント一覧。街コン、マッチングイベント、バスコンなど多彩なイベントを開催中！">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -70,24 +70,33 @@
             flex-shrink: 0;
         }
         .event-item-date .month {
-            font-family: var(--font-en);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--color-primary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
         .event-item-date .day {
-            font-family: var(--font-en);
             font-size: 32px;
             font-weight: 800;
             color: var(--color-primary);
             line-height: 1.1;
         }
         .event-item-date .weekday {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--color-primary-light);
+        }
+        .event-poster {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .event-poster img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
         }
         .event-item-content {
             flex: 1;
@@ -191,6 +200,9 @@
             }
             .event-item-date .day { font-size: 24px; }
             .event-item-top h2 { font-size: 16px; }
+            .event-poster {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -231,75 +243,15 @@
                 トップに戻る
             </a>
 
-            <!-- 4/5 お花見イベント -->
-            <div class="event-item">
-                <div class="event-item-date">
-                    <span class="month">APR</span>
-                    <span class="day">5</span>
-                    <span class="weekday">SUN</span>
-                </div>
-                <div class="event-item-content">
-                    <div class="event-item-top">
-                        <h2>お花見イベント in 長府庭園</h2>
-                        <span class="event-item-tag tag-hanami">お花見</span>
-                    </div>
-                    <div class="event-item-info">
-                        <span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            長府庭園
-                        </span>
-                    </div>
-                    <div class="event-item-price">
-                        男性 ¥5,000 / 女性 ¥2,000 <small>当日現金払い</small>
-                    </div>
-                    <div class="event-parts-inline">
-                        <strong>開催スケジュール</strong>
-                        第1部（36〜45歳）9:30受付 → 10:00〜12:00<br>
-                        第2部（26〜35歳）13:30受付 → 14:00〜16:00
-                    </div>
-                    <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/1uiF1zZa4hGL_dPOuEFptCsc6wU7tZaKrV-erWG_HV-U/viewform" target="_blank" class="btn btn-primary">申し込む</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4/12 CAFE婚活 -->
-            <div class="event-item">
-                <div class="event-item-date">
-                    <span class="month">APR</span>
-                    <span class="day">12</span>
-                    <span class="weekday">SUN</span>
-                </div>
-                <div class="event-item-content">
-                    <div class="event-item-top">
-                        <h2>CAFE婚活 in USAGI</h2>
-                        <span class="event-item-tag tag-cafe">カフェ</span>
-                    </div>
-                    <div class="event-item-info">
-                        <span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            14:40受付 → 15:00〜17:00
-                        </span>
-                        <span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            肉×2食堂 USAGI
-                        </span>
-                    </div>
-                    <div class="event-item-price">
-                        男性 ¥5,000 / 女性 ¥2,000 <small>ドリンク＋スイーツ付き・当日現金払い</small>
-                    </div>
-                    <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/1a1YYuTgbaP5HZdU0Sv9B80L3wXmBgkeV3K4ebmWlYSM/viewform" target="_blank" class="btn btn-primary">申し込む</a>
-                    </div>
-                </div>
-            </div>
-
             <!-- 4/12 バズコン in FLAP -->
             <div class="event-item">
                 <div class="event-item-date">
-                    <span class="month">APR</span>
+                    <span class="month">4月</span>
                     <span class="day">12</span>
-                    <span class="weekday">SUN</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967888_0.jpg" alt="バズコン in FLAP ポスター" loading="lazy">
                 </div>
                 <div class="event-item-content">
                     <div class="event-item-top">
@@ -320,7 +272,47 @@
                         男性 ¥7,000 / 女性 ¥3,000 <small>飲み放題・軽食付き・当日現金払い</small>
                     </div>
                     <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/1vLAYRhNsyHnXjUlFPj5gFIWgF3rqSRQeMpWBdF4VZYM/viewform" target="_blank" class="btn btn-primary">申し込む</a>
+                        <a href="https://docs.google.com/forms/d/1vLAYRhNsyHnXjUlFPj5gFIWgF3rqSRQeMpWBdF4VZYM/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4/25 バズコン in カラオケバーLOVE -->
+            <div class="event-item">
+                <div class="event-item-date">
+                    <span class="month">4月</span>
+                    <span class="day">25</span>
+                    <span class="weekday">土</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967889_0.jpg" alt="バズコン in カラオケバーLOVE ポスター" loading="lazy">
+                </div>
+                <div class="event-item-content">
+                    <div class="event-item-top">
+                        <h2>バズコン in カラオケバーLOVE</h2>
+                        <span class="event-item-tag tag-machikon">街コン</span>
+                    </div>
+                    <div class="event-item-info">
+                        <span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            19:00受付 → 19:30〜21:30
+                        </span>
+                        <span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            カラオケバーLOVE
+                        </span>
+                    </div>
+                    <div class="event-item-price">
+                        男性 ¥7,000 / 女性 ¥3,000 <small>飲み放題・軽食付き・当日現金払い</small>
+                    </div>
+                    <div class="event-parts-inline">
+                        <strong>当日のスケジュール</strong>
+                        19:30〜20:00 自己紹介タイム<br>
+                        20:00〜21:10 グループトーク<br>
+                        21:10〜21:30 連絡先交換タイム
+                    </div>
+                    <div class="event-item-footer">
+                        <a href="https://docs.google.com/forms/d/13i-zVAgdN8tn3D2ECgOxtvFD7RWvIa_E-5J8QAGEP64/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
                     </div>
                 </div>
             </div>
@@ -328,9 +320,12 @@
             <!-- 4/26 世代別マッチング -->
             <div class="event-item">
                 <div class="event-item-date">
-                    <span class="month">APR</span>
+                    <span class="month">4月</span>
                     <span class="day">26</span>
-                    <span class="weekday">SUN</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967890_0.jpg" alt="世代別婚活・恋活マッチングイベント ポスター" loading="lazy">
                 </div>
                 <div class="event-item-content">
                     <div class="event-item-top">
@@ -353,7 +348,7 @@
                         第3部（26〜32歳）15:30〜18:00
                     </div>
                     <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/16KpSVucTCCDu63s9AHT5SmaKx-y-ojR_oP3eFEj8DSs/viewform" target="_blank" class="btn btn-primary">申し込む</a>
+                        <a href="https://docs.google.com/forms/d/16KpSVucTCCDu63s9AHT5SmaKx-y-ojR_oP3eFEj8DSs/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
                     </div>
                 </div>
             </div>
@@ -361,9 +356,12 @@
             <!-- 5/10 宇部マッチング -->
             <div class="event-item">
                 <div class="event-item-date">
-                    <span class="month">MAY</span>
+                    <span class="month">5月</span>
                     <span class="day">10</span>
-                    <span class="weekday">SUN</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967891_0.jpg" alt="婚活・恋活マッチングイベント in 宇部 ポスター" loading="lazy">
                 </div>
                 <div class="event-item-content">
                     <div class="event-item-top">
@@ -385,7 +383,77 @@
                         第2部（29〜35歳）12:30〜15:00
                     </div>
                     <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/1k3JZf7i8v_5VzaPqulMagunlNkBLbUNP93gS69EY1iI/viewform" target="_blank" class="btn btn-primary">申し込む</a>
+                        <a href="https://docs.google.com/forms/d/1k3JZf7i8v_5VzaPqulMagunlNkBLbUNP93gS69EY1iI/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5/17 ボウリングまちコン -->
+            <div class="event-item">
+                <div class="event-item-date">
+                    <span class="month">5月</span>
+                    <span class="day">17</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967892_0.jpg" alt="ボウリングまちコン ポスター" loading="lazy">
+                </div>
+                <div class="event-item-content">
+                    <div class="event-item-top">
+                        <h2>ボウリングまちコン in 下関ロイヤルボウル</h2>
+                        <span class="event-item-tag tag-machikon">街コン</span>
+                    </div>
+                    <div class="event-item-info">
+                        <span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            下関ロイヤルボウル
+                        </span>
+                    </div>
+                    <div class="event-item-price">
+                        男性 ¥5,000 / 女性 ¥2,000 <small>2ゲーム＋貸し靴付き・当日現金払い</small>
+                    </div>
+                    <div class="event-parts-inline">
+                        <strong>開催スケジュール</strong>
+                        第1部（40〜59歳）10:00受付 → 10:20〜13:00<br>
+                        第2部（20〜39歳）13:50受付 → 14:10〜17:00
+                    </div>
+                    <div class="event-item-footer">
+                        <a href="https://docs.google.com/forms/d/11G2Edijmior0d7ETvNGlPvXOd2vrcldvcXz3GMzvTJE/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5/24 婚活・恋活マッチングイベント in 宇部 -->
+            <div class="event-item">
+                <div class="event-item-date">
+                    <span class="month">5月</span>
+                    <span class="day">24</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967893_0.jpg" alt="婚活・恋活マッチングイベント in 宇部 ポスター" loading="lazy">
+                </div>
+                <div class="event-item-content">
+                    <div class="event-item-top">
+                        <h2>婚活・恋活マッチングイベント in 宇部</h2>
+                        <span class="event-item-tag tag-matching">マッチング</span>
+                    </div>
+                    <div class="event-item-info">
+                        <span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            宇部市福祉ふれあいセンター
+                        </span>
+                    </div>
+                    <div class="event-item-price">
+                        男性 ¥4,000 / 女性 ¥1,000 <small>当日現金払い</small>
+                    </div>
+                    <div class="event-parts-inline">
+                        <strong>開催スケジュール</strong>
+                        第1部（43〜49歳）9:30受付 → 10:00〜12:00<br>
+                        第2部（22〜28歳）12:30受付 → 13:00〜15:00
+                    </div>
+                    <div class="event-item-footer">
+                        <a href="https://docs.google.com/forms/d/1EA4_lgNzc3DeEPxUiOJj0PINzCQlPMDEfKVF5nyoSn4/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
                     </div>
                 </div>
             </div>
@@ -393,9 +461,12 @@
             <!-- 6/7 萩バスコン -->
             <div class="event-item">
                 <div class="event-item-date">
-                    <span class="month">JUN</span>
+                    <span class="month">6月</span>
                     <span class="day">7</span>
-                    <span class="weekday">SUN</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="event-poster">
+                    <img src="S__69967894_0.jpg" alt="萩バスコン ポスター" loading="lazy">
                 </div>
                 <div class="event-item-content">
                     <div class="event-item-top">
@@ -420,7 +491,7 @@
                         萩城下町散策（11:00〜12:10）→ 萩焼会館で昼食（12:20〜13:20）→ 萩しーまーと（13:25〜14:00）
                     </div>
                     <div class="event-item-footer">
-                        <a href="https://docs.google.com/forms/d/1h3X-TuogX2V0H-gqBBUzYinc-iZQd6fyd8lfciudDjY/viewform" target="_blank" class="btn btn-primary">申し込む</a>
+                        <a href="https://docs.google.com/forms/d/1h3X-TuogX2V0H-gqBBUzYinc-iZQd6fyd8lfciudDjY/viewform" target="_blank" class="btn btn-primary">参加申し込みはこちら</a>
                     </div>
                 </div>
             </div>
@@ -438,6 +509,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="https://www.instagram.com/buzz_com2025/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://lin.ee/oxCMaOl" target="_blank" rel="noopener noreferrer">公式LINE</a>
                     <a href="events.html">イベント一覧</a>
                     <a href="https://docs.google.com/forms/d/14SbXQGxEfjeeMnHt0eTROwdoEBXbNjk3rht6guKrvV4/viewform" target="_blank">お問い合わせ</a>
                 </div>
