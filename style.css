@@ -340,6 +340,17 @@ img { max-width: 100%; display: block; }
     transform: translateY(-2px);
 }
 
+.btn-line {
+    background: #06C755;
+    color: white;
+    border: none;
+}
+.btn-line:hover {
+    background: #05b34c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(6,199,85,0.3);
+}
+
 .btn-outline-color {
     background: transparent;
     color: var(--color-primary);
