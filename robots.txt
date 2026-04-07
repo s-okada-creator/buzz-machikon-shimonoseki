@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://buzzcom.app/sitemap.xml
