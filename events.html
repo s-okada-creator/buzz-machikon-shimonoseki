@@ -247,7 +247,7 @@
             </a>
 
             <!-- 6/7 萩バスコン（イチ押し） -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-06-07">
                 <div class="event-item-date">
                     <span class="month">6月</span>
                     <span class="day">7</span>
@@ -285,7 +285,7 @@
             </div>
 
             <!-- 4/12 バズコン in FLAP -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-04-12">
                 <div class="event-item-date">
                     <span class="month">4月</span>
                     <span class="day">12</span>
@@ -319,7 +319,7 @@
             </div>
 
             <!-- 4/25 バズコン in カラオケバーLOVE -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-04-25">
                 <div class="event-item-date">
                     <span class="month">4月</span>
                     <span class="day">25</span>
@@ -359,7 +359,7 @@
             </div>
 
             <!-- 4/26 世代別マッチング -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-04-26">
                 <div class="event-item-date">
                     <span class="month">4月</span>
                     <span class="day">26</span>
@@ -395,7 +395,7 @@
             </div>
 
             <!-- 5/9 趣味・職業別マッチング -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-05-09">
                 <div class="event-item-date">
                     <span class="month">5月</span>
                     <span class="day">9</span>
@@ -431,7 +431,7 @@
             </div>
 
             <!-- 5/10 宇部マッチング -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-05-10">
                 <div class="event-item-date">
                     <span class="month">5月</span>
                     <span class="day">10</span>
@@ -466,7 +466,7 @@
             </div>
 
             <!-- 5/17 ボウリングまちコン -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-05-17">
                 <div class="event-item-date">
                     <span class="month">5月</span>
                     <span class="day">17</span>
@@ -501,7 +501,7 @@
             </div>
 
             <!-- 5/24 婚活・恋活マッチングイベント in 宇部 -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-05-24">
                 <div class="event-item-date">
                     <span class="month">5月</span>
                     <span class="day">24</span>
@@ -536,7 +536,7 @@
             </div>
 
             <!-- 5/31 BBQイベント in 豊田湖 -->
-            <div class="event-item">
+            <div class="event-item" data-date="2026-05-31">
                 <div class="event-item-date">
                     <span class="month">5月</span>
                     <span class="day">31</span>
@@ -649,6 +649,19 @@
                 });
             });
         }
+    </script>
+    <script>
+        // 開催日を過ぎたイベントを自動で非表示にする
+        (function() {
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+            document.querySelectorAll('.event-item[data-date]').forEach(function(item) {
+                var eventDate = new Date(item.getAttribute('data-date') + 'T23:59:59');
+                if (eventDate < today) {
+                    item.style.display = 'none';
+                }
+            });
+        })();
     </script>
 </body>
 </html>
