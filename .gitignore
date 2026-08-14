@@ -1,2 +1,6 @@
 Untitled
 .vercel
+
+# 内部メモは公開リポジトリに含めない
+README.md
+notes/
