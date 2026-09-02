@@ -4,3 +4,7 @@ Untitled
 # 内部メモは公開リポジトリに含めない
 README.md
 notes/
+
+# 案件管理ファイル（公開しない）
+LOG.md
+TODO.md
